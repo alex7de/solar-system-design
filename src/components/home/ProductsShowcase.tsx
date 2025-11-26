@@ -85,7 +85,7 @@ export function ProductsShowcase() {
             <Link
               key={product.id}
               to={`/product/${product.id}`}
-              className="group bg-card rounded-2xl border border-border overflow-hidden card-hover animate-fade-in"
+              className="group bg-card rounded-2xl border border-border hover:border-primary/30 overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               {/* Image */}

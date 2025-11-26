@@ -367,7 +367,8 @@ export default function CatalogPage() {
                     key={product.id}
                     to={`/product/${product.id}`}
                     className={cn(
-                      "group bg-card rounded-2xl border border-border overflow-hidden card-hover animate-fade-in",
+                      "group bg-card rounded-2xl border border-border hover:border-primary/30 overflow-hidden",
+                      "shadow-soft hover:shadow-medium transition-all duration-300 ease-out animate-fade-in",
                       viewMode === "list" && "flex"
                     )}
                     style={{ animationDelay: `${index * 50}ms` }}

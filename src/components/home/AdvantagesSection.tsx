@@ -51,7 +51,7 @@ export function AdvantagesSection() {
           {advantages.map((advantage, index) => (
             <div
               key={advantage.title}
-              className="group relative p-6 lg:p-8 rounded-2xl bg-card border border-border hover:border-primary/30 transition-all duration-300 animate-fade-in"
+              className="group relative p-6 lg:p-8 rounded-2xl bg-card border border-border hover:border-primary/30 shadow-soft hover:shadow-medium transition-all duration-300 ease-out animate-fade-in"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
