@@ -56,7 +56,7 @@ export function TrustSection() {
             {reviews.map((review, index) => (
               <div
                 key={review.id}
-                className="bg-card rounded-2xl p-6 border border-border animate-fade-in"
+                className="bg-card rounded-2xl p-6 border border-border hover:border-primary/20 shadow-soft hover:shadow-medium transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <Quote className="w-8 h-8 text-primary/30 mb-4" />

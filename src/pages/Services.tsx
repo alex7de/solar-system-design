@@ -115,7 +115,7 @@ export default function ServicesPage() {
               <div
                 key={service.id}
                 id={service.id}
-                className="group bg-card rounded-3xl border border-border overflow-hidden animate-fade-in"
+                className="group bg-card rounded-3xl border border-border hover:border-primary/30 overflow-hidden shadow-soft hover:shadow-medium transition-all duration-300 animate-fade-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="grid lg:grid-cols-5 gap-0">

@@ -396,7 +396,7 @@ export default function ProductPage() {
                 <Link
                   key={item.id}
                   to={`/product/${item.id}`}
-                  className="group bg-card rounded-2xl border border-border p-5 card-hover"
+                  className="group bg-card rounded-2xl border border-border hover:border-primary/30 p-5 shadow-soft hover:shadow-medium transition-all duration-300"
                 >
                   <div className="aspect-video rounded-xl bg-secondary mb-4 flex items-center justify-center">
                     <Zap className="w-12 h-12 text-primary/30 group-hover:text-primary/50 transition-colors" />
