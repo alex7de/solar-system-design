@@ -8,6 +8,7 @@ import Catalog from "./pages/Catalog";
 import Product from "./pages/Product";
 import Configurator from "./pages/Configurator";
 import Services from "./pages/Services";
+import ServicesLanding from "./pages/ServicesLanding";
 import Account from "./pages/Account";
 import Cart from "./pages/Cart";
 import NotFound from "./pages/NotFound";
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/product/:id" element={<Product />} />
           <Route path="/configurator" element={<Configurator />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services-landing" element={<ServicesLanding />} />
           <Route path="/account" element={<Account />} />
           <Route path="/cart" element={<Cart />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
