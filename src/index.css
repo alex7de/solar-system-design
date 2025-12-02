@@ -62,12 +62,22 @@
     --gradient-dark: linear-gradient(180deg, hsl(220 20% 12%) 0%, hsl(220 15% 20%) 100%);
     --gradient-glow: radial-gradient(circle at 50% 50%, hsl(152 76% 50% / 0.15) 0%, transparent 70%);
     --gradient-hero: linear-gradient(135deg, hsl(152 76% 36% / 0.05) 0%, hsl(82 85% 55% / 0.05) 100%);
+    --gradient-mesh: radial-gradient(at 40% 20%, hsl(152 76% 50% / 0.15) 0px, transparent 50%),
+                     radial-gradient(at 80% 0%, hsl(82 85% 55% / 0.1) 0px, transparent 50%),
+                     radial-gradient(at 0% 50%, hsl(210 80% 60% / 0.1) 0px, transparent 50%),
+                     radial-gradient(at 80% 50%, hsl(152 76% 36% / 0.1) 0px, transparent 50%),
+                     radial-gradient(at 0% 100%, hsl(82 85% 55% / 0.15) 0px, transparent 50%);
+    --gradient-radial-glow: radial-gradient(ellipse at center, hsl(152 76% 50% / 0.2) 0%, transparent 70%);
+    --gradient-border: linear-gradient(135deg, hsl(152 76% 50%) 0%, hsl(82 85% 55%) 50%, hsl(152 76% 36%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100% / 0.9) 0%, hsl(210 20% 98% / 0.7) 100%);
     
     /* Shadows */
     --shadow-sm: 0 1px 2px hsl(220 20% 10% / 0.05);
     --shadow-md: 0 4px 12px hsl(220 20% 10% / 0.08);
     --shadow-lg: 0 12px 40px hsl(220 20% 10% / 0.12);
     --shadow-glow: 0 0 40px hsl(152 76% 50% / 0.2);
+    --shadow-glow-lg: 0 0 80px hsl(152 76% 50% / 0.3);
+    --shadow-colored: 0 20px 60px -15px hsl(152 76% 36% / 0.25);
     
     /* Sidebar */
     --sidebar-background: 0 0% 98%;
@@ -147,10 +157,34 @@
     @apply bg-card/80 backdrop-blur-xl border border-border/50;
   }
   
+  /* Modern glassmorphism 2025 */
+  .glass-modern {
+    @apply relative backdrop-blur-2xl border border-white/20;
+    background: linear-gradient(135deg, hsl(var(--card) / 0.8) 0%, hsl(var(--card) / 0.4) 100%);
+  }
+  
+  .glass-card {
+    @apply relative overflow-hidden rounded-3xl backdrop-blur-xl border border-white/10;
+    background: linear-gradient(135deg, hsl(var(--card) / 0.95) 0%, hsl(var(--card) / 0.8) 100%);
+  }
+  
   /* Eco gradient text */
   .text-gradient-eco {
     @apply bg-clip-text text-transparent;
     background-image: var(--gradient-eco);
+  }
+  
+  /* Animated gradient text */
+  .text-gradient-animated {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-eco);
+    background-size: 200% auto;
+    animation: gradient-shift 3s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
   }
   
   /* Glow effect */
@@ -158,10 +192,99 @@
     box-shadow: var(--shadow-glow);
   }
   
+  .glow-primary-lg {
+    box-shadow: var(--shadow-glow-lg);
+  }
+  
   /* Card hover effect - subtle and professional */
   .card-hover {
     @apply transition-all duration-300 ease-out;
     @apply hover:shadow-medium hover:border-primary/30;
+  }
+  
+  /* Modern bento card */
+  .bento-card {
+    @apply relative overflow-hidden rounded-3xl bg-card border border-border/50 p-6 lg:p-8;
+    @apply transition-all duration-500 ease-out;
+  }
+  
+  .bento-card::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: var(--gradient-mesh);
+  }
+  
+  .bento-card:hover::before {
+    @apply opacity-100;
+  }
+  
+  .bento-card:hover {
+    @apply border-primary/20 shadow-lg;
+    transform: translateY(-2px);
+  }
+  
+  /* Gradient border effect */
+  .gradient-border {
+    @apply relative rounded-3xl;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    @apply absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-500;
+    background: var(--gradient-border);
+    z-index: -1;
+  }
+  
+  .gradient-border:hover::before {
+    @apply opacity-100;
+  }
+  
+  /* Animated border */
+  .animated-border {
+    @apply relative rounded-3xl overflow-hidden;
+  }
+  
+  .animated-border::before {
+    content: '';
+    @apply absolute -inset-1;
+    background: conic-gradient(from 0deg, hsl(152 76% 50%), hsl(82 85% 55%), hsl(152 76% 36%), hsl(152 76% 50%));
+    animation: rotate-border 4s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .animated-border:hover::before {
+    opacity: 1;
+  }
+  
+  .animated-border::after {
+    content: '';
+    @apply absolute inset-0.5 rounded-[22px] bg-card;
+  }
+  
+  @keyframes rotate-border {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  /* Floating animation */
+  .float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+  
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  /* Mesh gradient background */
+  .bg-mesh {
+    background-image: var(--gradient-mesh);
+  }
+  
+  /* Radial glow background */
+  .bg-radial-glow {
+    background-image: var(--gradient-radial-glow);
   }
   
   /* Interactive link underline */
@@ -214,6 +337,18 @@
     @apply bg-muted text-muted-foreground;
   }
   
+  /* Number counter with gradient */
+  .stat-number {
+    @apply font-display font-bold bg-clip-text text-transparent;
+    background-image: var(--gradient-eco);
+  }
+  
+  /* Modern pill badge */
+  .pill-badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium;
+    @apply bg-primary/10 text-primary border border-primary/20 backdrop-blur-sm;
+  }
+  
   /* Section padding */
   .section-padding {
     @apply py-16 md:py-24 lg:py-32;
@@ -226,6 +361,13 @@
   
   .container-wide {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Noise texture overlay */
+  .noise-overlay::after {
+    content: '';
+    @apply absolute inset-0 pointer-events-none opacity-[0.015];
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   }
 }
 
